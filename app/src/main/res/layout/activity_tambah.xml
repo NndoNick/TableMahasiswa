@@ -4,43 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TambahActivity"
     android:layout_margin="6dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".TambahActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah Mahasiswa"
+        android:id="@+id/tv_tambahDestinasi"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_margin="32dp"
-        android:textSize="28dp"/>
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="32dp"
+        android:textAlignment="center"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/et_npm"
-        android:hint="NPM"
-        android:layout_margin="6dp"/>
+        android:hint="NPM Mahasiswa"
+        android:inputType="text"
+        android:textSize="24sp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/et_nama"
-        android:hint="Nama"
-        android:layout_margin="6dp"/>
+        android:hint="Nama Mahasiswa"
+        android:inputType="text"
+        android:textSize="24sp"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/et_prodi"
-        android:hint="Prodi"
-        android:layout_margin="6dp"/>
+        android:hint="Nama Prodi"
+        android:inputType="text"
+        android:textSize="24sp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_tambah"
-        android:text="Tambah"
-        android:backgroundTint="#3498DB"/>
+        android:layout_marginTop="32dp"
+        android:text="TAMBAH"
+        android:textSize="24sp"/>
 
 </LinearLayout>

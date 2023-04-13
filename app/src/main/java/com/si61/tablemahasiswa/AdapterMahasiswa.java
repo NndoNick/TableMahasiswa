@@ -74,12 +74,6 @@ public class AdapterMahasiswa extends RecyclerView.Adapter<AdapterMahasiswa.View
                             nama = tvNama.getText().toString();
                             prodi = tvProdi.getText().toString();
 
-                            Intent kirim = new Intent(ctx, UbahActivity.class);
-                            kirim.putExtra("xId", id);
-                            kirim.putExtra("xNPM", npm);
-                            kirim.putExtra("xNama", nama);
-                            kirim.putExtra("xProdi", prodi);
-                            ctx.startActivity(kirim);
 
                         }
                     });
@@ -107,3 +101,4 @@ public class AdapterMahasiswa extends RecyclerView.Adapter<AdapterMahasiswa.View
         }
     }
 }
+

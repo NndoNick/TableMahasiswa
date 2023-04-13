@@ -15,63 +15,58 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
     private FloatingActionButton fabTambah;
-    private RecyclerView rvMahasiswa;
+    private RecyclerView rvDestinasi;
     private MyDatabaseHelper myDB;
-    private ArrayList<String> arrId, arrNpm, arrNama, arrProdi;
-    private AdapterMahasiswa adapterMahasiswa;
-
+    private ArrayList<String> arrId, arrNPM, arrNama, arrProdi;
+    private AdapterMahasiswa adDestinasi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         fabTambah = findViewById(R.id.fab_tambah);
-        rvMahasiswa = findViewById(R.id.rv_mahasiswa);
+        rvDestinasi = findViewById(R.id.rv_destinasi);
 
         fabTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TambahActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this,
+                        TambahActivity.class)
+                );
             }
         });
         myDB = new MyDatabaseHelper(MainActivity.this);
     }
 
-    private void sqLiteToArrayList(){
+    private void SQLiteToArrayList(){
         Cursor varCursor = myDB.bacaDataMahasiswa();
-        if(varCursor.getCount() == 0){
+        if(varCursor.getCount()==0){
             Toast.makeText(this, "Data Tidak Tersedia", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        }else {
             while(varCursor.moveToNext()){
                 arrId.add(varCursor.getString(0));
-                arrNpm.add(varCursor.getString(1));
+                arrNPM.add(varCursor.getString(1));
                 arrNama.add(varCursor.getString(2));
                 arrProdi.add(varCursor.getString(3));
             }
         }
     }
-    private void tampilMahasiswa(){
+    private void tampilDestinasi(){
         arrId = new ArrayList<>();
-        arrNpm = new ArrayList<>();
+        arrNPM = new ArrayList<>();
         arrNama = new ArrayList<>();
         arrProdi = new ArrayList<>();
 
-        sqLiteToArrayList();
-
-        //adMahasiswa = new AdapterMahasiswa(MainActivity.this, arrId, arrNpm, arrNama, arrProdi);
-        rvMahasiswa.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        rvMahasiswa.setAdapter(adapterMahasiswa);
-
-
+        SQLiteToArrayList();
+        adDestinasi = new AdapterMahasiswa(MainActivity.this,
+                arrId,arrNPM,arrNama,arrProdi);
+        rvDestinasi.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        rvDestinasi.setAdapter(adDestinasi);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        tampilMahasiswa();
+        tampilDestinasi();
     }
 }
